@@ -21,7 +21,7 @@ module YoutubeSearch
 
     def playlist_videos(playlist_id, format='xml')
       playlist_id = playlist_id.sub(/^PL/, "")
-      res = open("http://gdata.youtube.com/feeds/api/playlists/#{playlist_id}?v=2#{'&alt=json' if format == 'json'}").read
+      res = open("http://gdata.youtube.com/feeds/api/playlists/#{playlist_id}?v=2&safeSearch=none#{'&alt=json' if format == 'json'}").read
       if format == 'xml'
         parse(res, :type => :playlist)
       else
